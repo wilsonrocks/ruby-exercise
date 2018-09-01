@@ -1,6 +1,15 @@
 require_relative "jobs"
 require "test/unit"
 
+def assert_subtring_before string, first_substring, second_substring
+  assert_true(string.index(first_substring) < string.index(second_substring))
+end
+
+def assert_same_jobs hash
+  assert_equal(hash.keys.sort, order_jobs(hash).sort)
+end
+
+
 class TestOrderJobs < Test::Unit::TestCase
 
   def test_empty_string
@@ -17,7 +26,7 @@ class TestOrderJobs < Test::Unit::TestCase
       'c' => nil,
       'b' => nil, #in strange order as test shouldn't rely on key order
     }
-    assert_equal(['a', 'b', 'c'], order_jobs(input).sort)
+    assert_same_jobs(input)
   end
 
 end
