@@ -1,3 +1,5 @@
 def order_jobs (job_hash)
-  return ''
+  if job_hash == '' then
+    return []
+  end
 end
