@@ -8,6 +8,10 @@ def order_jobs (job_hash)
 
   job_hash.each do |job, depends_on|
 
+    if job == depends_on then
+      raise 'Jobs cannot depend on themselves!'
+    end
+
     if output.include?(job)
       next
     end

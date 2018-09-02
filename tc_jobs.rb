@@ -83,4 +83,17 @@ class TestOrderJobs < Test::Unit::TestCase
     assert_substring_before(output, 'd', 'c')
   end
 
+  def test_self_dependency
+
+    input = {
+      'a' => 'a'
+    }
+
+    assert_raise_message('Jobs cannot depend on themselves!') do
+      order_jobs(input)
+    end
+
+  end
+
+
 end
