@@ -9,7 +9,6 @@ def assert_same_jobs hash
   assert_equal(hash.keys.sort, order_jobs(hash).sort)
 end
 
-
 class TestOrderJobs < Test::Unit::TestCase
 
   def test_empty_string
@@ -107,9 +106,5 @@ class TestOrderJobs < Test::Unit::TestCase
     assert_raise_message('Jobs cannot have circular dependencies') do
       order_jobs(input)
     end
-
   end
-
-
-
 end
