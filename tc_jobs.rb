@@ -33,10 +33,11 @@ class TestOrderJobs < Test::Unit::TestCase
     input = {
       'a' => 'b',
       'b' => nil,
+      'c' => nil,
     }
     assert_same_jobs(input)
     output = order_jobs(input)
     assert_substring_before(output, 'b', 'a')
   end
-  
+
 end
