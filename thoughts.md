@@ -4,3 +4,4 @@
 * was pondering it in the bath and was thinking that you'd need to compare every job to enough other jobs to see where it'd need to be, and realised this was a sort. Am planning to solve it using a custom sort function where the job dependencies say whether something comes before something else. These exist in javascript and python as well as (now I've looked it up) Ruby
 * after getting to the point of trying it, have learned that Ruby doesn't have first class functions like javascript and python, so while it does have a sort_by, it uses procs, which I've not seen before. Going to go back to TDD and build up incrementally from test cases.
 * it would be nice to be able to generate custom error messages from custom assertions - so in this case I could dump the two arrays
+* have now solved it using a fairly neat stateful algorithm. Still need to check for circular dependencies and find out how to do errors in Ruby
