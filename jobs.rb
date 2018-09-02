@@ -12,6 +12,14 @@ def order_jobs (job_hash)
       raise 'Jobs cannot depend on themselves!'
     end
 
+    current_job = job
+
+    loop do
+      current_job = job_hash[current_job]
+      if current_job == job then raise 'Jobs cannot have circular dependencies' end
+      if current_job == nil then break end
+    end
+
     if output.include?(job)
       next
     end

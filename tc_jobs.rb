@@ -70,13 +70,16 @@ class TestOrderJobs < Test::Unit::TestCase
   end
 
   def test_common_dependencies
+
     input = {
       'a' => 'd',
       'b' => 'd',
       'c' => 'd',
       'd' => nil,
     }
+
     assert_same_jobs(input)
+
     output = order_jobs(input)
     assert_substring_before(output, 'd', 'a')
     assert_substring_before(output, 'd', 'b')
@@ -94,6 +97,19 @@ class TestOrderJobs < Test::Unit::TestCase
     end
 
   end
+
+  def test_circular_dependency
+    input = {
+      'a' => 'b',
+      'b' => 'a',
+    }
+
+    assert_raise_message('Jobs cannot have circular dependencies') do
+      order_jobs(input)
+    end
+
+  end
+
 
 
 end
