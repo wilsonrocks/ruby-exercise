@@ -2,3 +2,4 @@
 * Will try and solve in Ruby and fall back to javascript if it's too tough - please forgive any unidiomatic code
 * am using the built in ruby testing from https://en.wikibooks.org/wiki/Ruby_Programming/Unit_testing - sure there are other frameworks available
 * was pondering it in the bath and was thinking that you'd need to compare every job to enough other jobs to see where it'd need to be, and realised this was a sort. Am planning to solve it using a custom sort function where the job dependencies say whether something comes before something else. These exist in javascript and python as well as (now I've looked it up) Ruby
+* after getting to the point of trying it, have learned that Ruby doesn't have first class functions like javascript and python, so while it does have a sort_by, it uses procs, so I'm going to try and implement quicksort recursively myself
