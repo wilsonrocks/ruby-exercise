@@ -38,4 +38,5 @@ class TestOrderJobs < Test::Unit::TestCase
     output = order_jobs(input)
     assert_substring_before(output, 'b', 'a')
   end
+  
 end
