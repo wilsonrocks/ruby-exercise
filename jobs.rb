@@ -13,7 +13,7 @@ def order_jobs (job_hash)
     end
 
     if depends_on == nil then
-      output.push(job)
+      output.unshift(job)
       next
     end
 

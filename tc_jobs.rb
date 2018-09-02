@@ -40,4 +40,19 @@ class TestOrderJobs < Test::Unit::TestCase
     assert_substring_before(output, 'b', 'a')
   end
 
+  def test_two_constraints
+    input = {
+      'a' => 'b',
+      'b' => 'c',
+      'c' => nil,
+    }
+    assert_same_jobs(input)
+    output = order_jobs(input)
+    assert_substring_before(output, 'b', 'a')
+    assert_substring_before(output, 'c', 'b')
+    
+
+  end
+
+
 end
