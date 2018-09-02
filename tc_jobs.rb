@@ -50,9 +50,37 @@ class TestOrderJobs < Test::Unit::TestCase
     output = order_jobs(input)
     assert_substring_before(output, 'b', 'a')
     assert_substring_before(output, 'c', 'b')
-    
-
   end
 
+  def test_many_independent_constraints
+    input = {
+      'a' => 'b',
+      'b' => 'c',
+      'c' => nil,
+      'd' => 'e',
+      'e' => 'f',
+      'f' => nil,
+    }
+    assert_same_jobs(input)
+    output = order_jobs(input)
+    assert_substring_before(output, 'b', 'a')
+    assert_substring_before(output, 'c', 'b')
+    assert_substring_before(output, 'e', 'd')
+    assert_substring_before(output, 'f', 'e')
+  end
+
+  def test_common_dependencies
+    input = {
+      'a' => 'd',
+      'b' => 'd',
+      'c' => 'd',
+      'd' => nil,
+    }
+    assert_same_jobs(input)
+    output = order_jobs(input)
+    assert_substring_before(output, 'd', 'a')
+    assert_substring_before(output, 'd', 'b')
+    assert_substring_before(output, 'd', 'c')
+  end
 
 end
