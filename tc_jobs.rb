@@ -1,7 +1,7 @@
 require_relative "jobs"
 require "test/unit"
 
-def assert_subtring_before string, first_substring, second_substring
+def assert_substring_before string, first_substring, second_substring
   assert_true(string.index(first_substring) < string.index(second_substring))
 end
 
@@ -29,4 +29,13 @@ class TestOrderJobs < Test::Unit::TestCase
     assert_same_jobs(input)
   end
 
+  def test_one_constraint
+    input = {
+      'a' => 'b',
+      'b' => nil,
+    }
+    assert_same_jobs(input)
+    output = order_jobs(input)
+    assert_substring_before(output, 'b', 'a')
+  end
 end
